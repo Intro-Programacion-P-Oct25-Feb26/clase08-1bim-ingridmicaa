@@ -28,21 +28,25 @@ public class Ejemplo08 {
         int denominador = 1;
         String signo;
         String cadena = "";
+        
 
         do {
             // para manejar el signo asociado 
             if (denominador % 2 == 0) {
-                signo = "+";
-            } else {
                 signo = "-";
+            } else {
+                signo = "+";
             }
+            
             
             cadena = String.format("%s%s%d/%d ", 
                     cadena,
                     signo,
                     numerador, 
                     denominador);
+            numerador = numerador + 1;
             denominador = denominador + 1;
+            
 
         } while (denominador <= limite);
 
