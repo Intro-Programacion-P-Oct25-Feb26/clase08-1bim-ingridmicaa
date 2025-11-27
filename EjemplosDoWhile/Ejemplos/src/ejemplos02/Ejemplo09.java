@@ -25,7 +25,7 @@ public class Ejemplo09 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
-        
+
         String cadenaFinal;
         int nota;
         int salida;
@@ -34,37 +34,54 @@ public class Ejemplo09 {
         boolean bandera = true;
         int suma = 0;
         int contador_calificaciones = 0;
-        
+        String notaa;
         cadenaFinal = "Listado de Notas\n";
-        
+
         do {
-            
-            
+
+            System.out.println("Ingrese nombre del estudiante");
+            nombre = entrada.nextLine();
+
+            System.out.println("Ingrese calificación del estudiante");
+            nota = entrada.nextInt();
+
             // agrego valor al acumulador
             suma = suma + nota;
             // agrego una unidad al contador para luego sacar el promedio
             contador_calificaciones = contador_calificaciones + 1;
-            
-            
+
+            if (nota > 5) {
+                notaa = "Muy buena";
+            } else {
+                notaa = "Buena";
+            }
+            cadenaFinal = String.format("%sCalificación %d (%s) "
+                    + "del estudiante %s\n",
+                    cadenaFinal,
+                    nota,
+                    notaa,
+                    nombre);
+
             System.out.println("Ingrese (-111) si desea salir del ciclo; "
                     + "cualquier otro número para continuar");
             salida = entrada.nextInt();
+            entrada.nextLine();
 
             if (salida == -111) {
-                bandera = false;
+               bandera= false;
             }
             // atención
-            entrada.nextLine(); // se limpia el buffer, pues el primer valor
-                               // que se solicita al inicio del ciclo es una
-                               // cadena
+            // se limpia el buffer, pues el primer valor
+            // que se solicita al inicio del ciclo es una
+            // cadena
 
         } while (bandera); // (bandera==true)
-        
+
         // promedio = suma / contador_calificaciones;
-        promedio = (double)suma / contador_calificaciones;
+        promedio = (double) suma / contador_calificaciones;
         cadenaFinal = String.format("%s\nPromedio de calificaciones: %.2f",
                 cadenaFinal,
                 promedio);
-        System.out.printf("%s\n", cadenaFinal);
+        System.out.printf("%s\n ", cadenaFinal);
     }
 }
